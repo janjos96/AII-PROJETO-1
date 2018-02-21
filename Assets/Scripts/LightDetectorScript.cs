@@ -35,6 +35,7 @@ public class LightDetectorScript : MonoBehaviour {
 		foreach (GameObject light in lights) {
 			float r = light.GetComponent<Light> ().range;
 			strength += 1.0f / ((transform.position - light.transform.position).sqrMagnitude / r + 1);
+            Debug.DrawLine(transform.position, light.transform.position, Color.red);
 		}
 
 		if (numObjects > 0) {

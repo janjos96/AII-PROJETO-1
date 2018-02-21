@@ -820,6 +820,8 @@ MonoBehaviour:
   RL: {fileID: 14675050}
   LeftLD: {fileID: 11405036}
   RightLD: {fileID: 11466438}
+  LeftOD: {fileID: 0}
+  RightOD: {fileID: 0}
   m_LeftWheelSpeed: 0
   m_RightWheelSpeed: 0
 --- !u!136 &13641806

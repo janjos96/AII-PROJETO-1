@@ -6,8 +6,8 @@ public class CarBehaviour2a : CarBehaviour {
 	void Update()
 	{
 		//Read sensor values
-		float leftSensor = LeftLD.GetLinearOutput ();
-		float rightSensor = RightLD.GetLinearOutput ();
+        float leftSensor = LeftLD.GetLinearOutput () + LeftOD.GetLinearOutput();
+        float rightSensor = RightLD.GetLinearOutput () + RightOD.GetLinearOutput();
 
 		//Calculate target motor values
 		m_LeftWheelSpeed = leftSensor * MaxSpeed;
