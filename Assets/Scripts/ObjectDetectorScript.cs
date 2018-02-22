@@ -34,7 +34,6 @@ public class ObjectDetectorScript : MonoBehaviour
         else
         {
             obstacles = GetAllObstacle(); //quando o angulo for 360, o array guarda todos os obstaculos
-            Console.Write("ajsd");
         }
 
         strength = 0;
@@ -43,8 +42,9 @@ public class ObjectDetectorScript : MonoBehaviour
         foreach (GameObject obstacle in obstacles) //para cada obstaculo dentro do array
         {
             float r = obstacle.GetComponent<Rigidbody>().mass;
-            strength += 1.0f / ((transform.position - obstacle.transform.position).sqrMagnitude / r + 1);
+            strength += 1.0f / ((transform.position - obstacle.transform.position).sqrMagnitude / r + 1.0f);
             Debug.DrawLine(transform.position, obstacle.transform.position, Color.red); //desenha linhas que mostram a detecao dos obstaculos
+
         }
 
         if (numObjects > 0) 
@@ -56,6 +56,7 @@ public class ObjectDetectorScript : MonoBehaviour
     // Get linear output value
     public float GetLinearOutput()
     {
+        if (strength <= 0.5) { strength = 0; }
         return strength;
     }
 
