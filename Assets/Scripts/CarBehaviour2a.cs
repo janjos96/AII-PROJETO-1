@@ -5,12 +5,16 @@ public class CarBehaviour2a : CarBehaviour {
 	
 	void Update()
 	{
-		//Read sensor values
-        float leftSensor = LeftLD.GetLinearOutput () + LeftOD.GetLinearOutput();
-        float rightSensor = RightLD.GetLinearOutput () + RightOD.GetLinearOutput();
+		//Read light sensor values
+        float leftLightSensor = LeftLD.GetLinearOutput ();
+        float rightLightSensor = RightLD.GetLinearOutput ();
+
+        //Read obstacle sensor values
+        float leftObstacleSensor = LeftOD.GetLinearOutput();
+        float rightObstacleSensor = RightOD.GetLinearOutput();
 
 		//Calculate target motor values
-		m_LeftWheelSpeed = leftSensor * MaxSpeed;
-		m_RightWheelSpeed = rightSensor * MaxSpeed;
+        m_LeftWheelSpeed = (rightLightSensor + leftObstacleSensor) * MaxSpeed;
+        m_RightWheelSpeed = (leftLightSensor + rightObstacleSensor) * MaxSpeed;
 	}
 }

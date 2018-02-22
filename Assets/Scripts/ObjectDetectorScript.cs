@@ -34,7 +34,6 @@ public class ObjectDetectorScript : MonoBehaviour
         else
         {
             obstacles = GetAllObstacle();
-            Console.Write("ajsd");
         }
 
         strength = 0;
@@ -42,8 +41,8 @@ public class ObjectDetectorScript : MonoBehaviour
 
         foreach (GameObject obstacle in obstacles)
         {
-            float r = obstacle.GetComponent<Rigidbody>().mass + 10;
-            strength += 1.0f / ((transform.position - obstacle.transform.position).sqrMagnitude / r + 1);
+            float r = obstacle.GetComponent<Rigidbody>().mass;
+            strength += 1f / ((transform.position - obstacle.transform.position).sqrMagnitude / r + 1f);
             Debug.DrawLine(transform.position, obstacle.transform.position, Color.red);
         }
 
@@ -56,6 +55,7 @@ public class ObjectDetectorScript : MonoBehaviour
     // Get linear output value
     public float GetLinearOutput()
     {
+        if (strength <= 0.5) { strength = 0; }
         return strength;
     }
 
