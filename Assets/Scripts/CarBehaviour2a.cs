@@ -13,7 +13,8 @@ public class CarBehaviour2a : CarBehaviour {
         float leftObstacleSensor = LeftOD.GetLinearOutput();
         float rightObstacleSensor = RightOD.GetLinearOutput();
 
-		//Calculate target motor values
+		// Calculate target motor values
+        // LightSensors estão ligados cruzados e ObstacleSensor estão ligados diretamente
         m_LeftWheelSpeed = (rightLightSensor + leftObstacleSensor) * MaxSpeed;
         m_RightWheelSpeed = (leftLightSensor + rightObstacleSensor) * MaxSpeed;
 	}

@@ -29,34 +29,35 @@ public class ObjectDetectorScript : MonoBehaviour
 
         if (useAngle) //quando o angulo for menor que 360
         {
-            obstacles = GetVisibleObstacle(); //o array so guarda os obstaculos visiveis neste angulo
+            obstacles = GetVisibleObstacle(); //o array contém os obstaculos visiveis neste angulo
         }
         else
         {
-            obstacles = GetAllObstacle(); //quando o angulo for 360, o array guarda todos os obstaculos
+            obstacles = GetAllObstacle(); //quando o angulo for 360, o array contém todos os obstaculos
         }
 
         strength = 0;
-        numObjects = obstacles.Length;
+        numObjects = obstacles.Length; // devolve número de obstaculos encontrados num instante
 
         foreach (GameObject obstacle in obstacles) //para cada obstaculo dentro do array
         {
-            float r = obstacle.GetComponent<Rigidbody>().mass;
-            strength += 1.0f / ((transform.position - obstacle.transform.position).sqrMagnitude / r + 1.0f);
+            float r = obstacle.GetComponent<Rigidbody>().mass; //cria um variavél "r" que contém a massa do obstaculo
+            strength += 1.0f / ((transform.position - obstacle.transform.position).sqrMagnitude / r + 0.5f); //sqrMagnitude devolve o valor da distancia ao obstaculo e divide o valor pelo centro de massa do obstaculo
             Debug.DrawLine(transform.position, obstacle.transform.position, Color.red); //desenha linhas que mostram a detecao dos obstaculos
 
         }
 
         if (numObjects > 0) 
         {
-            strength = strength / numObjects; 
+            strength = strength / numObjects; //divide a forca a ser exercicida nas rodas pelo numero de objectos ativos nos sensores
         }
     }
 
     // Get linear output value
+    // Existem limites e por isso, se a força for menor que 0.2 o sensor despreza essa força e não a passa às rodas
     public float GetLinearOutput()
     {
-        if (strength <= 0.5) { strength = 0; }
+        if (strength <= 0.2) { strength = 0; }
         return strength;
     }
 
@@ -77,17 +78,17 @@ public class ObjectDetectorScript : MonoBehaviour
     GameObject[] GetVisibleObstacle()
     {
         ArrayList visibleObstacles = new ArrayList();
-        float halfAngle = angle / 2.0f;
+        float halfAngle = angle / 2.0f; //dividir o angulo pois cada sensor tem um angulo próprio
 
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
 
         foreach (GameObject obstacle in obstacles) 
         {
-            Vector3 toVector = (obstacle.transform.position - transform.position); //distancia entre o sensor e o obstaculo
-			Vector3 forward = transform.forward;
+            Vector3 toVector = (obstacle.transform.position - transform.position); //vetor entre o sensor e o obstaculo
+            Vector3 forward = transform.forward; //devolve o vetor no eixo azul (z)
             toVector.y = 0;
             forward.y = 0;
-            float angleToTarget = Vector3.Angle(forward, toVector); //angulo entre o vetor forward e toVector
+            float angleToTarget = Vector3.Angle(forward, toVector); //angulo entre o vetor forward e toVector, neste caso entre o sensor e o obstaculo
 
             if (angleToTarget <= halfAngle) //se o angulo entre os vetores anteriores for menor que metade do angulo
 											//de captacao dos sensores, o obstaculo fica guardado no array de obstaculos visiveis
@@ -96,7 +97,7 @@ public class ObjectDetectorScript : MonoBehaviour
             }
         }
 
-        return (GameObject[])visibleObstacles.ToArray(typeof(GameObject)); //devolve todos os GameObject em forma de array
+        return (GameObject[])visibleObstacles.ToArray(typeof(GameObject)); //devolve todos os GameObject validados em forma de array
     }
 
 
