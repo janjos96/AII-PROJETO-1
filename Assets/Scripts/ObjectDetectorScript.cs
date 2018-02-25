@@ -58,6 +58,7 @@ public class ObjectDetectorScript : MonoBehaviour
     public float GetLinearOutput()
     {
         if (strength <= 0.2) { strength = 0; }
+        if (strength >= 0.8) { strength = 0; }
         return strength;
     }
 

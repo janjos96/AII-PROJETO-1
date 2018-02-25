@@ -47,7 +47,7 @@ public class LightDetectorScript : MonoBehaviour {
     // Existem limites e por isso, se a força for menor que 0.1 o sensor despreza essa força e não a passa às rodas assim como se for maio que 0.8
 	public float GetLinearOutput()
 	{
-        if (strength <= 0.1) { strength = 0; }
+        if (strength <= 0.2) { strength = 0; }
         if (strength >= 0.8) { strength = 0; }
 		return strength;
 	}
