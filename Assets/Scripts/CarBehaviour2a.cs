@@ -15,7 +15,7 @@ public class CarBehaviour2a : CarBehaviour {
 
 		// Calculate target motor values
         // LightSensors estão ligados cruzados e ObstacleSensor estão ligados diretamente
-        m_LeftWheelSpeed = (rightLightSensor + leftObstacleSensor) * MaxSpeed;
+		m_LeftWheelSpeed = (rightLightSensor + leftObstacleSensor) * MaxSpeed;
         m_RightWheelSpeed = (leftLightSensor + rightObstacleSensor) * MaxSpeed;
 	}
 }
