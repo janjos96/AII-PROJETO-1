@@ -240,7 +240,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 405622, guid: 5d96f705d64a84afdbff31c21d1f0a9d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.49
+      value: -2.49
       objectReference: {fileID: 0}
     - target: {fileID: 405622, guid: 5d96f705d64a84afdbff31c21d1f0a9d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -248,7 +248,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 405622, guid: 5d96f705d64a84afdbff31c21d1f0a9d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 14.68
+      value: 10.67
       objectReference: {fileID: 0}
     - target: {fileID: 405622, guid: 5d96f705d64a84afdbff31c21d1f0a9d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -365,6 +365,16 @@ Prefab:
     - target: {fileID: 114623366887446634, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: gaussian
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623366887446634, guid: 43deefba3ea0e46a18f869aca8568f24,
+        type: 2}
+      propertyPath: gaussian_lover
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623366887446634, guid: 43deefba3ea0e46a18f869aca8568f24,
+        type: 2}
+      propertyPath: gaussian_explorer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -581,7 +591,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1205087753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.55, y: -0.5, z: 0.6}
+  m_LocalPosition: {x: -13.15, y: -0.5, z: -1.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1961964494}

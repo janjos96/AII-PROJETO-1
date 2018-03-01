@@ -16,6 +16,8 @@ public class CarBehaviour : MonoBehaviour {
 	public float m_RightWheelSpeed;
 	private float m_axleLength;
 
+    public bool gaussian;
+
 	void Start()
 	{
 		m_Rigidbody = GetComponent<Rigidbody> (); //componente para efetuar alterações no carro
