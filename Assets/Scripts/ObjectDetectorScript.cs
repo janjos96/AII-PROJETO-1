@@ -57,15 +57,20 @@ public class ObjectDetectorScript : MonoBehaviour
     // Existem limites e por isso, se a força for menor que 0.2 o sensor despreza essa força e não a passa às rodas assim como se for maio que 0.8 este valor não aumenta
     public float GetLinearOutput()
     {
-        if (strength <= 0.2) { strength = 0; }
-        if (strength >= 0.8) { strength = 0.8f; }
         return strength;
     }
 
     // Get gaussian output value
     public virtual float GetGaussianOutput()
     {
-        throw new NotImplementedException();
+        float desvio = 0.12f;
+        float media = 0.5f;
+
+        //float value = ((1.0f / (desvio * Mathf.Sqrt(2.0f * Mathf.PI))) * (Mathf.Exp((-(Mathf.Pow(strength - media, 2.0f)) / (2.0f * Mathf.Pow(desvio, 2.0f))))));
+
+        float value = 1 * Mathf.Exp(-(Mathf.Pow(strength - media, 2)) / (2 * Mathf.Pow(desvio, 2)));
+
+        return value;
     }
 
     // Returns all "Obstacle" tagged objects. The sensor angle is not taken into account.
