@@ -14,7 +14,10 @@ public class LightDetectorScript : MonoBehaviour {
     public bool inverse;
 
     public float strengthLinear;
-    public float strengthGaussiano;
+    public float strengthGaussiana;
+
+    public float desvioPadrao;
+    public float media;
 
     public float maxLimiar;
     public float minLimiar;
@@ -65,7 +68,7 @@ public class LightDetectorScript : MonoBehaviour {
         if (output == 0.0f) { output = 0.05f; }
         if (output >= 0.6f) { output = 0.6f; }*/
 
-        if(inverse){
+        if (inverse){
             strengthLinear = -strength + 1;
         } else {
             strengthLinear = strength;
@@ -74,18 +77,19 @@ public class LightDetectorScript : MonoBehaviour {
 		return strengthLinear;
 	}
 
-	// Get gaussian output value
-	public virtual float GetGaussianOutput()
-	{
-        float desvio = 0.12f;
-        float media = 0.5f;
+    // Get gaussian output value
+    public virtual float GetGaussianOutput()
+    {
 
         //float value = ((1.0f / (desvio * Mathf.Sqrt(2.0f * Mathf.PI))) * (Mathf.Exp((-(Mathf.Pow(strength - media, 2.0f)) / (2.0f * Mathf.Pow(desvio, 2.0f))))));
 
-        float value = 1*Mathf.Exp(-(Mathf.Pow(strength - media, 2))/(2*Mathf.Pow(desvio,2)));
+        if (inverse){
+            strengthGaussiana = -(1 * Mathf.Exp(-(Mathf.Pow(strength - media, 2)) / (2 * Mathf.Pow(desvioPadrao, 2))))+1;
+        } else {
+            strengthGaussiana = 1 * Mathf.Exp(-(Mathf.Pow(strength - media, 2)) / (2 * Mathf.Pow(desvioPadrao, 2)));
+        }
 
-
-        return value;
+        return strengthGaussiana;
 
 	}
 		
