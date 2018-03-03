@@ -11,6 +11,16 @@ public class LightDetectorScript : MonoBehaviour {
 	public float strength;
 	public int numObjects;
 
+    public bool inverse;
+
+    public float strengthLinear;
+    public float strengthGaussiano;
+
+    public float maxLimiar;
+    public float minLimiar;
+    public float maxLimite;
+    public float minLimite;
+
 	void Start () {
 		strength = 0;
 		numObjects = 0;
@@ -47,15 +57,21 @@ public class LightDetectorScript : MonoBehaviour {
     // Existem limites e por isso, se a força for menor que 0.1 o sensor despreza essa força e não a passa às rodas assim como se for maio que 0.8 este valor não aumenta
 	public float GetLinearOutput()
 	{
-        if (strength <= 0.25f) { strength = 0; }
+        /*if (strength <= 0.25f) { strength = 0; }
         if (strength >= 0.75f) { strength = 0; }
 
         float output = strength;
 
         if (output == 0.0f) { output = 0.05f; }
-        if (output >= 0.6f) { output = 0.6f; }
+        if (output >= 0.6f) { output = 0.6f; }*/
 
-		return output;
+        if(inverse){
+            strengthLinear = -strength + 1;
+        } else {
+            strengthLinear = strength;
+        }
+
+		return strengthLinear;
 	}
 
 	// Get gaussian output value
