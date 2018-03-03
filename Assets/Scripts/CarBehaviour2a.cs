@@ -9,11 +9,12 @@ public class CarBehaviour2a : CarBehaviour {
         float leftLightSensor;
         float rightLightSensor;
 
-        if(gaussian){
+        if(gaussian){ // caso a boolean gaussiana esteja ativada a strenght das rodas irá ser calculada pela função gaussiana
             //Read light sensor values
             leftLightSensor = LeftLD.GetGaussianOutput();
             rightLightSensor = RightLD.GetGaussianOutput();
-        } else {
+        } else { // caso a boolean gaussiana NÃO esteja ativada a strenght das rodas irá ser calculada linearmente
+                 //sem sofrer alterações da funçao normal
             //Read light sensor values
             leftLightSensor = LeftLD.GetLinearOutput();
             rightLightSensor = RightLD.GetLinearOutput();

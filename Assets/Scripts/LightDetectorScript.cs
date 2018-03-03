@@ -59,25 +59,32 @@ public class LightDetectorScript : MonoBehaviour {
 	}
 
 	// Get linear output value
-    // Existem limites e por isso, se a força for menor que 0.1 o sensor despreza essa força e não a passa às rodas assim como se for maio que 0.8 este valor não aumenta
+    // Get linar output não altera a função que devolve a strenght apenas devolve este valor
 	public float GetLinearOutput()
 	{
-
+        // função invertida, caso seja ativada, simula o comportamento inverso no carrinho
+        // se este se estiver a aproximar da luz, irá passar a fugir
         if (inverse){
             strengthLinear = -strength + 1;
-        } else {
+        } else { // caso contrário nenhum calculo é efetuado
             strengthLinear = strength;
         }
 
+        // caso se esteja a usar limiares e a boolean ativada
         if(limiar) {
+            // se o valor da strength calculada acima for maior que o limiar superior ou
+            // menor que o limiar inferior, a força não sofre alterações e é igual a 0
             if(strengthLinear < minLimiar || strengthLinear > maxLimiar) {
                 strengthLinear = 0;
             }
         }
 
+        // caso se esteja a usar limites e a boolean ativada
         if(limite) {
+            // se o valor da força calculada acima for menor que o limite minimo, passa a assumir o valor do limite mínimo
             if(strengthLinear < minLimite){
                 strengthLinear = minLimite;
+            // se o valor da força calculada acima for maior que o limite máximo, passa a assumir o valor do limite máximo
             } else if (strengthLinear > maxLimite){
                 strengthLinear = maxLimite;
             }
@@ -87,15 +94,43 @@ public class LightDetectorScript : MonoBehaviour {
 	}
 
     // Get gaussian output value
+    // Get gaussian output calcula o valor da strenght usando uma função gaussiana onde o desvio padrão e media são definidos nos sensores
     public virtual float GetGaussianOutput()
     {
-
+        //Primeira função gaussiana usada, optamos por usar a funcão abaixo por ser mais facil controlar a altura da função
         //float value = ((1.0f / (desvio * Mathf.Sqrt(2.0f * Mathf.PI))) * (Mathf.Exp((-(Mathf.Pow(strength - media, 2.0f)) / (2.0f * Mathf.Pow(desvio, 2.0f))))));
 
+
+        // função invertida, caso seja ativada, simula o comportamento inverso no carrinho
+        // se este se estiver a aproximar da luz, irá passar a fugir
         if (inverse){
+            //função invertida = -gaussiana+1
             strengthGaussiana = -(1 * Mathf.Exp(-(Mathf.Pow(strength - media, 2)) / (2 * Mathf.Pow(desvioPadrao, 2))))+1;
         } else {
+            //função gaussiana usada para calcular a strenght, o primeiro número controla a altura da função
+            //neste caso é um pois os valores de strenght estão sempre entre 0 e 1
             strengthGaussiana = 1 * Mathf.Exp(-(Mathf.Pow(strength - media, 2)) / (2 * Mathf.Pow(desvioPadrao, 2)));
+        }
+
+        // caso se esteja a usar limiares e a boolean ativada
+        if (limiar){
+            // se o valor da strength calculada acima for maior que o limiar superior ou
+            // menor que o limiar inferior, a força não sofre alterações e é igual a 0
+            if (strengthGaussiana < minLimiar || strengthGaussiana > maxLimiar){
+                strengthGaussiana = 0;
+            }
+        }
+
+        // caso se esteja a usar limites e a boolean ativada
+        if (limite){
+            // se o valor da força calculada acima for menor que o limite minimo, passa a assumir o valor do limite mínimo
+            if (strengthGaussiana < minLimite){
+                strengthGaussiana = minLimite;
+            }
+            // se o valor da força calculada acima for maior que o limite máximo, passa a assumir o valor do limite máximo
+            else if (strengthGaussiana > maxLimite){
+                strengthGaussiana = maxLimite;
+            }
         }
 
         return strengthGaussiana;
