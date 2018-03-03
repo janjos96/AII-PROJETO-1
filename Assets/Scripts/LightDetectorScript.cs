@@ -19,6 +19,8 @@ public class LightDetectorScript : MonoBehaviour {
     public float desvioPadrao;
     public float media;
 
+    public bool limiar;
+    public bool limite;
     public float maxLimiar;
     public float minLimiar;
     public float maxLimite;
@@ -65,6 +67,20 @@ public class LightDetectorScript : MonoBehaviour {
             strengthLinear = -strength + 1;
         } else {
             strengthLinear = strength;
+        }
+
+        if(limiar) {
+            if(strengthLinear < minLimiar || strengthLinear > maxLimiar) {
+                strengthLinear = 0;
+            }
+        }
+
+        if(limite) {
+            if(strengthLinear < minLimite){
+                strengthLinear = minLimite;
+            } else if (strengthLinear > maxLimite){
+                strengthLinear = maxLimite;
+            }
         }
 
 		return strengthLinear;
