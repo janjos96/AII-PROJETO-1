@@ -105,7 +105,7 @@ public class LightDetectorScript : MonoBehaviour {
         // se este se estiver a aproximar da luz, irá passar a fugir
         if (inverse){
             //função invertida = -gaussiana+1
-            strengthGaussiana = -(1 * Mathf.Exp(-(Mathf.Pow(strength - media, 2)) / (2 * Mathf.Pow(desvioPadrao, 2))))+1;
+            strengthGaussiana = -(1 * Mathf.Exp(-(Mathf.Pow(6 - media, 2)) / (2 * Mathf.Pow(desvioPadrao, 2))))+1;
         } else {
             //função gaussiana usada para calcular a strenght, o primeiro número controla a altura da função
             //neste caso é um pois os valores de strenght estão sempre entre 0 e 1

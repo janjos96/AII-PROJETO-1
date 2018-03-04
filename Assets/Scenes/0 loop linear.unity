@@ -462,22 +462,22 @@ Prefab:
     - target: {fileID: 114141090352018816, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: desvioPadrao
-      value: 0.15
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 114141090352018816, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: media
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 114744290185118140, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: desvioPadrao
-      value: 0.15
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 114744290185118140, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: media
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 54682826876566836, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
@@ -487,7 +487,7 @@ Prefab:
     - target: {fileID: 114744290185118140, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: limiar
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114744290185118140, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
@@ -497,27 +497,27 @@ Prefab:
     - target: {fileID: 114744290185118140, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: maxLimiar
-      value: 0.75
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114744290185118140, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: minLimiar
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114744290185118140, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: maxLimite
-      value: 0.19
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114744290185118140, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: minLimite
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114141090352018816, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: limiar
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114141090352018816, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
@@ -527,22 +527,22 @@ Prefab:
     - target: {fileID: 114141090352018816, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: maxLimiar
-      value: 0.75
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 114141090352018816, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: minLimiar
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114141090352018816, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: maxLimite
-      value: 0.3
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 114141090352018816, guid: 43deefba3ea0e46a18f869aca8568f24,
         type: 2}
       propertyPath: minLimite
-      value: 0.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4787708924346880, guid: 43deefba3ea0e46a18f869aca8568f24, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
