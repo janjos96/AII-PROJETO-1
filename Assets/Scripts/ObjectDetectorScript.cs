@@ -11,6 +11,8 @@ public class ObjectDetectorScript : MonoBehaviour
 
     public float strength;
     public int numObjects;
+    float tempdist;
+    float distance;
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class ObjectDetectorScript : MonoBehaviour
 
     void Update()
     {
+        tempdist = 1000000;
         GameObject[] obstacles; //array que guarda os obstaculos
 
         if (useAngle) //quando o angulo for menor que 360
@@ -37,15 +40,23 @@ public class ObjectDetectorScript : MonoBehaviour
         }
 
         strength = 0;
+
         numObjects = obstacles.Length; // devolve número de obstaculos encontrados num instante
 
         foreach (GameObject obstacle in obstacles) //para cada obstaculo dentro do array
         {
+            distance = (obstacle.transform.position - transform.position).magnitude;
+            if(distance < tempdist) {
+                tempdist = distance;
+            } else {
+                continue;
+            }
             float r = obstacle.GetComponent<Rigidbody>().mass; //cria um variavél "r" que contém a massa do obstaculo
             strength += 1.0f / ((transform.position - obstacle.transform.position).sqrMagnitude / r + 0.5f); //sqrMagnitude devolve o valor da distancia ao obstaculo e divide o valor pelo centro de massa do obstaculo
             Debug.DrawLine(transform.position, obstacle.transform.position, Color.red); //desenha linhas que mostram a detecao dos obstaculos
 
         }
+
 
         if (numObjects > 0) 
         {
