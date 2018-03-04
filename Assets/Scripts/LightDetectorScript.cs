@@ -136,7 +136,8 @@ public class LightDetectorScript : MonoBehaviour {
         return strengthGaussiana;
 
 	}
-		
+
+
 	// Returns all "Light" tagged objects. The sensor angle is not taken into account.
 	GameObject[] GetAllLights()
 	{
