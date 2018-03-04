@@ -19,6 +19,7 @@ public class CarBehaviour2a : CarBehaviour {
             leftLightSensor = LeftLD.GetLinearOutput();
             rightLightSensor = RightLD.GetLinearOutput();
         }
+			
 
         //Read obstacle sensor values
         float leftObstacleSensor = LeftOD.GetLinearOutput();
