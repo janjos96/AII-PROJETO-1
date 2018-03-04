@@ -12,6 +12,7 @@ public class LightDetectorScript : MonoBehaviour {
 	public int numObjects;
 
     public bool inverse;
+    public bool drawLines;
 
     public float strengthLinear;
     public float strengthGaussiana;
@@ -50,7 +51,9 @@ public class LightDetectorScript : MonoBehaviour {
 		foreach (GameObject light in lights) { //para cada luz dentro do array
             float r = light.GetComponent<Light> ().range; //cria um variavél "r" que contém o alcance da luz
             strength += 1.0f / ((transform.position - light.transform.position).sqrMagnitude / r + 1); //sqrMagnitude devolve o valor da distancia à fonte de luz e divide o valor pelo alcance desta
-            Debug.DrawLine(transform.position, light.transform.position, Color.blue); //desenha linhas que mostram a detecao das luzes
+            if(drawLines){
+                Debug.DrawLine(transform.position, light.transform.position, Color.blue); //desenha linhas que mostram a detecao das luzes
+            }
 		}
 
 		if (numObjects > 0) {

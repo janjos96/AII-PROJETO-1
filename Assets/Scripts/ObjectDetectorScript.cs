@@ -14,6 +14,8 @@ public class ObjectDetectorScript : MonoBehaviour
     float tempdist;
     float distance;
 
+    public bool drawLines;
+
     void Start()
     {
         strength = 0;
@@ -53,8 +55,10 @@ public class ObjectDetectorScript : MonoBehaviour
             }
             float r = obstacle.GetComponent<Rigidbody>().mass; //cria um variavél "r" que contém a massa do obstaculo
             strength += 1.0f / ((transform.position - obstacle.transform.position).sqrMagnitude / r + 0.5f); //sqrMagnitude devolve o valor da distancia ao obstaculo e divide o valor pelo centro de massa do obstaculo
-            Debug.DrawLine(transform.position, obstacle.transform.position, Color.red); //desenha linhas que mostram a detecao dos obstaculos
 
+            if(drawLines){
+                Debug.DrawLine(transform.position, obstacle.transform.position, Color.red); //desenha linhas que mostram a detecao dos obstaculos 
+            }
         }
 
 
